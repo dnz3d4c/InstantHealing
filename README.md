@@ -1,0 +1,2 @@
+# instantHealing
+What is healing?
