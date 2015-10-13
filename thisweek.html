@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height">
+  <title>This week? - instant healing</title>
+  <script>
+  /*
+  Name: instant healing #2 This Week?
+  ReleaseDate: 20140404
+  Copyright:instantHealing:http://instanthealing.in
+  -- ReleaseNote --
+  * 20140404: Initial release.
+  * 20151013:
+    1. addDateString 함수 제거. 날짜 출력 블록에 통합.
+    2. 동일한 날짜 출력 가능하도록 개선.
+    3. 가독성을 위해 전체적인 드려쓰기 조정.
+    4. Add support meta-viewport.
+    5. Update page title.
+  */
+  window.addEventListener("load", function () {
+  var ul = document.createElement('ul');
+  document.body.appendChild(ul);
+  var d = new Date();
+  var today = d.getDay(); // 오늘
+  var expired = 5; // getDay ==1:월, getDay == 5: 금
+  var longDayString = ["월요일", "화요일", "수요일", "목요일", "금요일"];
+
+
+  if (today == 0 || today == 6) {
+    alert('아니, 주말에도 일을 합니까?');
+} else {
+  for (var i = today; i <= expired; i++) {
+    var li = document.createElement('li');
+    var text = document.createTextNode(d.getMonth()+1 + "월 " + d.getDate() + "일 " + longDayString[i-1]);
+    li.appendChild(text);
+    ul.appendChild(li);
+    d.setDate(d.getDate()+1);
+};
+};
+}, false);
+  </script>
+ </head>
+ <body>
+  <h3>이번주는?</h3>
+ </body>
+</html>
