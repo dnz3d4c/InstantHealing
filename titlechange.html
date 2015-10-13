@@ -1,0 +1,38 @@
+<!DOCTYPE ht	ml>
+<html>
+<head>
+<meta charset="utf-8">
+<title>instant healing #1 웹 페이지 타이틀 변경</title>
+<script type="text/javascript">
+// name: instant healing #1 웹 페이지 타이틀 변경
+// ReleaseDate: 20131203
+/*
+ReleaseNote:
+- 20131203: Initial release.
+- 20131204: ie7에서 타이틀 변경 안되던 문제 수정.
+- 20140301: 변경된 타이틀에 대한 라이브리전 지원.
+*/
+// Copyright(DongHui)
+function titleChange() {
+// title 객체, liveRegion을 위한 변수 생성.
+var title = document.getElementById('title_text');
+var liveRegion = document.getElementById('liveRegion');
+// title 객체의 value 속성 체크를 통한 조건 확인. 입력값이 있을 때만 set_title 객체에 넘긴다.
+if (title.value == '') {
+alert('입력은 하고 변경하자.');
+} else {
+ document.body.childNodes[3].style.display = 'none';
+ document.title = title.value;
+  liveRegion.innerHTML = title.value;
+ };
+};
+</script>
+</head>
+<body>
+<h2 id="liveRegion" aria-live="polite" aria-atomic="true" aria-relevant="text">웹 페이지의 title 변경</h2>
+<p>원하는 타이틀을 텍스트 필드에 입력하고 타이틀 변경 버튼을 누릅니다.</p>
+<label for="title_text">변경할 타이틀 입력</label>
+<input type="text" id="title_text" />
+<input type="button" value="타이틀 변경" onclick="titleChange()" />
+</body>
+</html>
