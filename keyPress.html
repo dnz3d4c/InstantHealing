@@ -7,15 +7,22 @@
   <script>
   /*
   Name: instant healing #3 keyPress
-  ReleaseDate: 
+  ReleaseDate: 20151016
   Copyright:instantHealing:http://instanthealing.in
   -- ReleaseNote --
-  
+  * 20151016
+    - Initial screen reader notification keyCode & keyName(A~Z,0~9,,.) only.
+    - Shift, Control and hotkey keyName notification not support.
   */
+
   window.addEventListener("load", function () {
+  var viewer = document.getElementById("viewer");
   var result = document.getElementsByTagName("input")[0];
   result.addEventListener("keydown", function (event) {
-  alert(event.keyCode + " " + String.fromCharCode(event.keyCode));
+  var li = document.createElement("li");
+  var text = document.createTextNode(String.fromCharCode(event.keyCode) + " = " + event.keyCode);
+  li.appendChild(text);
+  viewer.appendChild(li);
   }, false);
   }, false);
   </script>
@@ -25,5 +32,8 @@
   <h3> '눌러' 입력상자에서 마음껏 아무 키나 누르세요!</h3>
   <label for="press">아무 키나 누르세요...</label>
   <input type="text" id="press" readonly />
+  <ul id="viewer" aria-live="polite">
+  
+  </ul>
  </body>
 </html>
