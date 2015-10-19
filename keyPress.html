@@ -24,13 +24,15 @@
   window.addEventListener("load", function () {
   var keyPress = function (event) {
   var viewer = document.getElementById("viewer");
-  if (event.keyCode >= 112 && event.keyCode <= 123 || event.keyCode === 9 || event.keyCode === 18) {
-    event.preventDefault();
-  };
   var li = document.createElement("li");
   var text = document.createTextNode(String.fromCharCode(event.keyCode) + " = " + event.keyCode);
   li.appendChild(text);
   viewer.appendChild(li);
+  // For preventDefault
+  if (event.keyCode >= 112 && event.keyCode <= 123 || event.keyCode === 9 || event.keyCode === 18) {
+    event.preventDefault();
+  };
+  // Remove events handlers
   if (event.keyCode === 27) {
     result.removeAttribute("role");
     result.removeEventListener("focus", srHandler, false);
