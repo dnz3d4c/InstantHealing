@@ -13,18 +13,21 @@
   * 20151016
     - Initial screen reader notification keyCode & keyName(A~Z,0~9,,.) only.
     - Shift, Control and hotkey keyName notification not support.
+  * 20151019
+    * Code Cleanup.
   */
 
   window.addEventListener("load", function () {
+  var keyPress = function (event) {
   var viewer = document.getElementById("viewer");
-  var result = document.getElementsByTagName("input")[0];
-  result.addEventListener("keydown", function (event) {
   var li = document.createElement("li");
   var text = document.createTextNode(String.fromCharCode(event.keyCode) + " = " + event.keyCode);
   li.appendChild(text);
   viewer.appendChild(li);
-  }, false);
-  }, false);
+};
+  var result = document.getElementsByTagName("input")[0];
+  result.addEventListener("keydown", keyPress, false);
+}, false);
   </script>
  </head>
 
