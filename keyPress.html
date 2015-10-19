@@ -16,11 +16,16 @@
   * 20151019
     - JS Code Cleanup.
     - Improve Screen Reader handling.
+  * 20151020
+    - keyCode 112~123, 9, 18 is preventDefault().
   */
 
   window.addEventListener("load", function () {
   var keyPress = function (event) {
   var viewer = document.getElementById("viewer");
+  if (event.keyCode >= 112 && event.keyCode <= 123 || event.keyCode === 9 || event.keyCode === 18) {
+    event.preventDefault();
+  };
   var li = document.createElement("li");
   var text = document.createTextNode(String.fromCharCode(event.keyCode) + " = " + event.keyCode);
   li.appendChild(text);
