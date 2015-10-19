@@ -18,6 +18,7 @@
     - Improve Screen Reader handling.
   * 20151020
     - keyCode 112~123, 9, 18 is preventDefault().
+    - contextmenu event is preventDefault().
   */
 
   window.addEventListener("load", function () {
@@ -32,15 +33,20 @@
   viewer.appendChild(li);
   if (event.keyCode === 27) {
     result.removeAttribute("role");
-    result.removeEventListener("keydown", keyPress, false);
     result.removeEventListener("focus", srHandler, false);
+    result.removeEventListener ("contextmenu", cContextMenu, false);
+    result.removeEventListener("keydown", keyPress, false);
   };
   };
   var result = document.getElementsByTagName("input")[0];
   var srHandler = function () {
     result.setAttribute("role", "application");
   };
+  var cContextMenu = function (event) {
+    event.preventDefault();
+  };
   result.addEventListener("focus", srHandler, false);
+  result.addEventListener("contextmenu", cContextMenu, false);
   result.addEventListener("keydown", keyPress, false);
 }, false);
   </script>
