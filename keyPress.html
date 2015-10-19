@@ -14,7 +14,8 @@
     - Initial screen reader notification keyCode & keyName(A~Z,0~9,,.) only.
     - Shift, Control and hotkey keyName notification not support.
   * 20151019
-    * Code Cleanup.
+    - JS Code Cleanup.
+    - Improve Screen Reader handling.
   */
 
   window.addEventListener("load", function () {
@@ -24,8 +25,16 @@
   var text = document.createTextNode(String.fromCharCode(event.keyCode) + " = " + event.keyCode);
   li.appendChild(text);
   viewer.appendChild(li);
-};
+  if (event.keyCode === 27) {
+    result.removeAttribute("role");
+    result.removeEventListener("keydown", keyPress, false);
+  };
+  };
   var result = document.getElementsByTagName("input")[0];
+  var srHandler = function () {
+    result.setAttribute("role", "application");
+  };
+  result.addEventListener("focus", srHandler, false);
   result.addEventListener("keydown", keyPress, false);
 }, false);
   </script>
