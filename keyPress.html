@@ -28,6 +28,7 @@
   if (event.keyCode === 27) {
     result.removeAttribute("role");
     result.removeEventListener("keydown", keyPress, false);
+    result.removeEventListener("focus", srHandler, false);
   };
   };
   var result = document.getElementsByTagName("input")[0];
