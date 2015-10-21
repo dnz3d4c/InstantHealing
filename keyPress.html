@@ -21,15 +21,18 @@
     - contextmenu event is preventDefault().
   * 20151021
     - 문자열 키들은 올바른 유니코드 값을 출력함.
+    - 의미 없는 기능키 값이 출력되지 않도록 개선.
   */
 
   window.addEventListener("load", function () {
   var keyPress = function (event) {
   var viewer = document.getElementById("viewer");
-  var li = document.createElement("li");
-  var text = document.createTextNode(String.fromCharCode(event.charCode) + " = " + event.charCode);
-  li.appendChild(text);
-  viewer.appendChild(li);
+  if (event.charCode != 0) {
+    var li = document.createElement("li");
+    var text = document.createTextNode(String.fromCharCode(event.charCode) + " = " + event.charCode);
+    li.appendChild(text);
+    viewer.appendChild(li);
+  };
   // For preventDefault
   if (event.keyCode >= 112 && event.keyCode <= 123 || event.keyCode === 9 || event.keyCode === 18) {
     event.preventDefault();
