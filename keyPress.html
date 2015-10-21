@@ -19,13 +19,15 @@
   * 20151020
     - keyCode 112~123, 9, 18 is preventDefault().
     - contextmenu event is preventDefault().
+  * 20151021
+    - 문자열 키들은 올바른 유니코드 값을 출력함.
   */
 
   window.addEventListener("load", function () {
   var keyPress = function (event) {
   var viewer = document.getElementById("viewer");
   var li = document.createElement("li");
-  var text = document.createTextNode(String.fromCharCode(event.keyCode) + " = " + event.keyCode);
+  var text = document.createTextNode(String.fromCharCode(event.charCode) + " = " + event.charCode);
   li.appendChild(text);
   viewer.appendChild(li);
   // For preventDefault
@@ -37,7 +39,7 @@
     result.removeAttribute("role");
     result.removeEventListener("focus", srHandler, false);
     result.removeEventListener ("contextmenu", cContextMenu, false);
-    result.removeEventListener("keydown", keyPress, false);
+    result.removeEventListener("keypress", keyPress, false);
   };
   };
   var result = document.getElementsByTagName("input")[0];
@@ -49,7 +51,7 @@
   };
   result.addEventListener("focus", srHandler, false);
   result.addEventListener("contextmenu", cContextMenu, false);
-  result.addEventListener("keydown", keyPress, false);
+  result.addEventListener("keypress", keyPress, false);
 }, false);
   </script>
  </head>
