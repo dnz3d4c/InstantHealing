@@ -27,12 +27,10 @@
   window.addEventListener("load", function () {
   var keyPress = function (event) {
   var viewer = document.getElementById("viewer");
-  if (event.charCode != 0) {
-    var li = document.createElement("li");
-    var text = document.createTextNode(String.fromCharCode(event.charCode) + " = " + event.charCode);
-    li.appendChild(text);
-    viewer.appendChild(li);
-  };
+  var li = document.createElement("li");
+  var text = document.createTextNode(String.fromCharCode(event.charCode) + " = " + event.charCode);
+  li.appendChild(text);
+  viewer.appendChild(li);
   // Remove events handlers
   if (event.keyCode === 27) {
     result.removeAttribute("role");
