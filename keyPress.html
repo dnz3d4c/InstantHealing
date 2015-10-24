@@ -1,21 +1,81 @@
 <!DOCTYPE html>
-<html>
+ <html>
  <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, height=device-height">
   <title>instant healing - keyPress</title>
   <script>
-  /*
+/*
   Name: instant healing #3 keyPress
   ReleaseDate: 20151016
   Copyright:instantHealing:http://instanthealing.in
   
-  */
+*/
 
-  window.addEventListener("load", function () {
+window.addEventListener("load", function () {
   var keyDown = function (event) {
   var key = String.fromCharCode(event.keyCode);
   var char = event.keyCode;
+  // 기능키 대응 코드 #1
+  switch (char) {
+    case 8:
+    key = "Backspace";
+    break;
+    case 9:
+    key = "Tab";
+    break;
+    case 13:
+    key = "Enter";
+    break;
+    case 16:
+    key = "Shift";
+    break;
+    case 17:
+    key = "Control";
+    break;
+    case 18:
+    key = "Alt";
+    break;
+    case 20:
+    key = "Caps lock";
+    break;
+    case 27:
+    key = "Escape";
+    break;
+    case 32:
+    key = "Space";
+    break;
+    case 33:
+    key = "Page up";
+    break;
+    case 34:
+    key = "Page down";
+    break;
+    case 35:
+    key = "End";
+    break;
+    case 36:
+    key = "Home";
+    break;
+    case 37:
+    key = "Left arrow";
+    break;
+    case 38:
+    key = "Up arrow";
+    break;
+    case 39:
+    key = "Right arrow";
+    break;
+    case 40:
+    key = "Down arrow";
+    break;
+    case 45:
+    key = "Insert";
+    break;
+    case 46:
+    key = "Delete";
+    break;
+  };
   var viewer = document.getElementById("viewer");
   var li = document.createElement("li");
   var text = document.createTextNode(key + ": " + char);
