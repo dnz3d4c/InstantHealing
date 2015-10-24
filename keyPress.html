@@ -23,7 +23,6 @@
   if (event.keyCode === 27) {
     result.removeAttribute("role");
     result.removeEventListener("focus", srHandler, false);
-    result.removeEventListener ("contextmenu", cContextMenu, false);
     result.removeEventListener("keypress", keyPress, false);
   };
   };
@@ -31,11 +30,7 @@
   var srHandler = function () {
     result.setAttribute("role", "application");
   };
-  var cContextMenu = function (event) {
-    event.preventDefault();
-  };
   result.addEventListener("focus", srHandler, false);
-  result.addEventListener("contextmenu", cContextMenu, false);
   result.addEventListener("keypress", keyPress, false);
 }, false);
   </script>
