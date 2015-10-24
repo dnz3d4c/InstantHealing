@@ -13,17 +13,19 @@
   */
 
   window.addEventListener("load", function () {
-  var keyPress = function (event) {
+  var keyDown = function (event) {
+  var key = String.fromCharCode(event.keyCode);
+  var char = event.keyCode;
   var viewer = document.getElementById("viewer");
   var li = document.createElement("li");
-  var text = document.createTextNode(String.fromCharCode(event.charCode) + " = " + event.charCode);
+  var text = document.createTextNode(key + ": " + char);
   li.appendChild(text);
   viewer.appendChild(li);
   // Remove events handlers
   if (event.keyCode === 27) {
     result.removeAttribute("role");
     result.removeEventListener("focus", srHandler, false);
-    result.removeEventListener("keypress", keyPress, false);
+    result.removeEventListener("keydown", keyDown, false);
   };
   };
   var result = document.getElementsByTagName("input")[0];
@@ -31,7 +33,7 @@
     result.setAttribute("role", "application");
   };
   result.addEventListener("focus", srHandler, false);
-  result.addEventListener("keypress", keyPress, false);
+  result.addEventListener("keydown", keyDown, false);
 }, false);
   </script>
  </head>
