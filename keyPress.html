@@ -76,6 +76,11 @@ window.addEventListener("load", function () {
     key = "Delete";
     break;
   };
+  // 기능키 대응 코드 #2
+  var fKeys = [112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123];
+  if (code >= 112 && code <= 123) {
+    key = "F" + (fKeys.indexOf(code)+1);
+  };
   // preventDefault
   if (code >= 112 && code <= 123 || code >= 8 && code <= 9 || code === 18) {
     event.preventDefault();
