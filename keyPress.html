@@ -76,6 +76,10 @@ window.addEventListener("load", function () {
     key = "Delete";
     break;
   };
+  // preventDefault
+  if (char >= 112 && char <= 123 || char >= 8 && char <= 9 || char === 18) {
+    event.preventDefault();
+  };
   var viewer = document.getElementById("viewer");
   var li = document.createElement("li");
   var text = document.createTextNode(key + ": " + char);
