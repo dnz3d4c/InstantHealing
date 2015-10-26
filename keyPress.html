@@ -80,11 +80,13 @@ window.addEventListener("load", function () {
   if (code >= 112 && code <= 123 || code >= 8 && code <= 9 || code === 18) {
     event.preventDefault();
   };
-  var viewer = document.getElementById("viewer");
-  var li = document.createElement("li");
-  var text = document.createTextNode(key + ": " + code);
-  li.appendChild(text);
-  viewer.appendChild(li);
+  if (event.getModifierState("CapsLock") === true) {
+    var viewer = document.getElementById("viewer");
+    var li = document.createElement("li");
+    var text = document.createTextNode(key + ": " + code);
+    li.appendChild(text);
+    viewer.appendChild(li);
+  };
   // Remove events handlers
   if (code === 27) {
     result.removeAttribute("role");
